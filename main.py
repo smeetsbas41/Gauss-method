@@ -1,16 +1,16 @@
 import numpy as np
 
-# Функция для решения системы линейных уравнений методом Гаусса
+# functhion  for solve
 def gauss_elimination(A, b):
     n = len(A)
-    # Прямой ход
+    # go line
     for i in range(n-1):
         for j in range(i+1, n):
             factor = A[j, i] / A[i, i]
             A[j, i:] -= factor * A[i, i:]
             b[j] -= factor * b[i]
 
-    # Обратный ход
+    # another
     x = np.zeros(n)
     x[n-1] = b[n-1] / A[n-1, n-1]
     for i in range(n-2, -1, -1):
@@ -18,12 +18,12 @@ def gauss_elimination(A, b):
 
     return x
 
-# Пример системы линейных уравнений
+# example of line 
 A = np.array([[2, 1, -1],
               [-3, -1, 2],
               [-2, 1, 2]])
 b = np.array([8, -11, -3])
 
-# Решаем систему уравнений
+# solving
 solution = gauss_elimination(A, b)
-print("Решение системы уравнений:", solution)
+print("solution:", solution)
